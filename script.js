@@ -500,9 +500,7 @@ const menu = ['a', 'b', 'c', 'd', 'e', 'f'];
 const entriesMenu = [...menu.entries()];
 console.log(...entriesMenu[0]);
 
-
 //////////// Enhanced Object literals exercise/////////
-
 
 //Using computed properties to fill the newBook object with the properties and values from the bookData array. The first one is done already.
 
@@ -512,13 +510,11 @@ const bookData = [
   ['publisher', 'Addison Wesley'],
 ];
 
-
 const newBook = {
   [bookData[0][0]]: bookData[0][1],
   [bookData[1][0]]: bookData[1][1],
-  [bookData[2][0]]: bookData[2][1]
+  [bookData[2][0]]: bookData[2][1],
 };
-
 
 //Below is the pages variable. Add it as a property of the newBook2 object. Use the shorter way.
 
@@ -527,14 +523,26 @@ const pages = 880;
 const newBook2 = {
   title: 'The C Programming Language',
   author: ['Brian W. Kernighan', 'Dennis M. Ritchie'],
-  pages
+  pages,
 };
-
-
 
 //////////// Optional chaining ?. exercise/////////
 
+//Write a function called getFirstKeyword that takes the book object as an argument. This function should return the first keyword from the book's keywords property (array) or undefined (if the keywords property doesn't exist). It shouldn't throw an error. Use optional chaining for that.
 
-const getFirstKeyword  = function(book) {
-  const firstKeyword = book
+const getFirstKeyword = function (bookIn) {
+  const bookKeyword = bookIn.keywords[0] ?? 'undefined';
+  console.log(bookKeyword);
+};
+getFirstKeyword(books[0]);
+
+//////////// Looping Objects: Object Keys, Values and Entries /////////
+
+const entries = [];
+console.log(Object.keys(books[0].thirdParty.goodreads));
+
+const bookKeys = Object.keys(books[0].thirdParty.goodreads);
+for (const nameKey of bookKeys ){
+  entries.push([nameKey]);
 }
+console.log(entries);
